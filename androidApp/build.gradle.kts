@@ -36,3 +36,7 @@ android {
         jvmToolchain(11)
     }
 }
+
+dependencies {
+    implementation("androidx.navigation:navigation-compose:2.5.3")
+}

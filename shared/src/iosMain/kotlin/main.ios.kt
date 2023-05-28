@@ -1,5 +1,4 @@
 import androidx.compose.ui.window.ComposeUIViewController
 
-actual fun getPlatformName(): String = "iOS"
-
-fun MainViewController() = ComposeUIViewController { App() }
+fun FirstViewController(navigationCallBack: () -> Unit) = ComposeUIViewController { FirstScreen(navigationCallBack) }
+fun SecondViewController() = ComposeUIViewController { SecondScreen() }

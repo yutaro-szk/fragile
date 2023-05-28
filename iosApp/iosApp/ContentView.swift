@@ -2,18 +2,21 @@ import UIKit
 import SwiftUI
 import shared
 
-struct ComposeView: UIViewControllerRepresentable {
-    func makeUIViewController(context: Context) -> UIViewController {
-        Main_iosKt.MainViewController()
-    }
-
-    func updateUIViewController(_ uiViewController: UIViewController, context: Context) {}
-}
 
 struct ContentView: View {
+    @State private var shouldShowSecondView: Bool = false
+    
     var body: some View {
-        ComposeView()
-                .ignoresSafeArea(.all, edges: .bottom) // Compose has own keyboard handler
+        NavigationView {
+            VStack {
+                FirstScreenView(navigationCallBack: {
+                    shouldShowSecondView.toggle()
+                }).ignoresSafeArea(.all, edges: .bottom)
+                NavigationLink(destination: SecondScreenView(), isActive:$shouldShowSecondView) {
+                    EmptyView()
+                }
+            }
+        }
     }
 }
 
